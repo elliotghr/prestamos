@@ -33,3 +33,9 @@ Configuramos nuestros archivos de configuración
 1.  Generamos el marcado HTML en nuestro archivo plantilla.php
     - Separamos en componentes la NavBar, la Nav Lateral, los Links, los Scripts js, todos dentro de una carpeta inc.
     - Escribimos correctamente su ruta, la cual debe de partir desde el index.
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 07 Como crear vistas en PHP & MVC
+
+1. Generamos las vistas de la aplicación en la carpeta contenidos
+2. En nuestra plantilla instanciamos el objeto vistasControlador para hacer uso de su método obtener_vistas_controlador();
+4. Creamos un renderizado condicional, si la vista es _login_ o _404_ no renderizaremos las navbars, si es cualquier otra vista sí renderizaremos las navbars
