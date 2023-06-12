@@ -1,0 +1,12 @@
+<!-- Habilitamos la sobreescritura de reglas o configuración en el servidor apache -->
+
+RewriteEngine On
+
+<!-- Con esta linea evitamos que se vean los archivos del servidor, ej: cuando accedemos a un directorio y se ven los archivos desde el -->
+
+Options All -Indexes
+
+<!-- Permite URL amigables en PHP -->
+<!-- Definimos la expresión regular que tednrá que cumplir en nuestra variable views -->
+
+RewriteRule ^([a-zA-Z0-9/ñÑ-]+)$ index.php?views=$1
