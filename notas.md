@@ -27,3 +27,9 @@ Configuramos nuestros archivos de configuración
 
 2. Se define el controlador, que hereda el metodo del modelo anterior y se crean sus métodos para devolver la plantilla y para devolver la vista, si está definido el parametro $_GET['views'] se hace uso de las validaciones del método obtener_vistas_modelo() de la clase vistasModelo, si no está definido se devuelve como \_login_
 3. En el index se importa la configuración global, se importa el controlador, se instancia nuestro objeto vistasControlador y se trae la plantilla
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 06 Configurando plantilla base para proyecto MVC
+
+1.  Generamos el marcado HTML en nuestro archivo plantilla.php
+    - Separamos en componentes la NavBar, la Nav Lateral, los Links, los Scripts js, todos dentro de una carpeta inc.
+    - Escribimos correctamente su ruta, la cual debe de partir desde el index.
