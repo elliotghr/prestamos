@@ -96,4 +96,21 @@ class mainModel
 
         return $cadena;
     }
+
+    //-------- Función para verificar datos (patterns) --------
+    public static function verificar_datos($pattern, $string)
+    {
+        if (preg_match('/^' . $pattern . '$/', $string)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    //-------- Función para verificar fechas --------
+    protected static function verificar_fecha($date)
+    {
+        $new_date = explode($date, "-");
+        $fecha = checkdate($new_date[1], $new_date[2], $new_date[0]);
+    }
 }

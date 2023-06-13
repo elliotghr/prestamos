@@ -56,3 +56,8 @@ Configuramos nuestros archivos de configuración
 
 1. Añadimos funciones de encriptación y desencriptación para cadenas, esto con el fin de poder hashear ids por la url y tener un medio de seguridad (que no se puedan manipular los ids por la url)
 2. Generamos el método generar_codigo_aleatorio(), el cual nos servirá para llevar el número de prestamo
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 12 Funciones para validar datos y fechas
+
+1. Creamos una función verificar datos que retorna si hubo un error o no al testear un pattern
+2. Creamos una función para verificar que la fecha sea valida
