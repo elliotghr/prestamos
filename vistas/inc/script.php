@@ -19,3 +19,6 @@
     </script>
 
     <script src="<?php echo SERVERURL ?>vistas/js/main.js"></script>
+
+    <!-- Agregamos alertas.js -->
+    <script src="<?php echo SERVERURL ?>vistas/js/alertas.js"></script>

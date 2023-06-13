@@ -6,10 +6,17 @@
     <link rel="stylesheet" href="<?php echo SERVERURL ?>vistas/css/bootstrap-material-design.min.css">
     <!-- Font Awesome V5.9.0 -->
     <link rel="stylesheet" href="<?php echo SERVERURL ?>vistas/css/all.css">
+
+    <!-- Sweet Alerts v8 deprecada -->
     <!-- Sweet Alerts V8.13.0 CSS file -->
-    <link rel="stylesheet" href="<?php echo SERVERURL ?>vistas/css/sweetalert2.min.css">
+    <!-- <link rel="stylesheet" href="<?php echo SERVERURL ?>vistas/css/sweetalert2.min.css"> -->
     <!-- Sweet Alert V8.13.0 JS file-->
-    <script src="<?php echo SERVERURL ?>vistas/js/sweetalert2.min.js"></script>
+    <!-- <script src="<?php echo SERVERURL ?>vistas/js/sweetalert2.min.js"></script> -->
+
+    <!-- Sweet Alerts V11 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
     <!-- jQuery Custom Content Scroller V3.1.5 -->
     <link rel="stylesheet" href="<?php echo SERVERURL ?>vistas/css/jquery.mCustomScrollbar.css">
     <!-- General Styles -->

@@ -18,11 +18,11 @@
 		<li>
 			<a href="<?php echo SERVERURL ?>user-search/"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR USUARIO</a>
 		</li>
-	</ul>	
+	</ul>
 </div>
 
 <div class="container-fluid">
-	<form action="" class="form-neon" autocomplete="off">
+	<form action="" class="form-neon FormularioAjax" action="" method="POST" data-form="" autocomplete="off">
 		<fieldset>
 			<legend><i class="far fa-address-card"></i> &nbsp; Información personal</legend>
 			<div class="container-fluid">
@@ -33,7 +33,7 @@
 							<input type="text" pattern="[0-9-]{1,20}" class="form-control" name="usuario_dni_reg" id="usuario_dni" maxlength="20">
 						</div>
 					</div>
-					
+
 					<div class="col-12 col-md-4">
 						<div class="form-group">
 							<label for="usuario_nombre" class="bmd-label-floating">Nombres</label>
@@ -81,13 +81,13 @@
 					<div class="col-12 col-md-6">
 						<div class="form-group">
 							<label for="usuario_clave_1" class="bmd-label-floating">Contraseña</label>
-							<input type="password" class="form-control" name="usuario_clave_1_reg" id="usuario_clave_1" pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100" required="" >
+							<input type="password" class="form-control" name="usuario_clave_1_reg" id="usuario_clave_1" pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100" required="">
 						</div>
 					</div>
 					<div class="col-12 col-md-6">
 						<div class="form-group">
 							<label for="usuario_clave_2" class="bmd-label-floating">Repetir contraseña</label>
-							<input type="password" class="form-control" name="usuario_clave_2_reg" id="usuario_clave_2" pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100" required="" >
+							<input type="password" class="form-control" name="usuario_clave_2_reg" id="usuario_clave_2" pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100" required="">
 						</div>
 					</div>
 				</div>

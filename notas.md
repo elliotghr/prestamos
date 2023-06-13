@@ -67,3 +67,10 @@ Configuramos nuestros archivos de configuración
 1. creamos un método llamado paginacion() en el mainModel, el cual generará el contenido HTML de nuestra navegación con los parametros: $pagina, $n_paginas, $url, $botones.
 2. Dependiendo de la página en la que nos ubicamos renderizamos o deshabilitamos ciertos botones
 3. Creamos un ciclo para renderizar n cantidad de botones, y generamos un condicional para aplicar un estilo _active_ si es el botón de la página actual o no
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 15, 16 y 17 Funciones JavaScript (parte 1, 2 y 3)
+
+1. Creamos un archivo alertas en nuestra carpeta vistas/js/
+2. Incluimos el script de este archivo en Scripts.php
+3. Haciendo uso de sweet alert 2 creamos una función que mostrará cierta alerta dependiendo del tipo de alerta que le pasemos, el objeto de las alertas se alimentará del json que le pasemos
+4. Creamos un envío de datos con fetch con los atributos del formulario
