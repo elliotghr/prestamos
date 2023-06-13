@@ -10,13 +10,13 @@
 <div class="container-fluid">
 	<ul class="full-box list-unstyled page-nav-tabs">
 		<li>
-			<a href="user-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; NUEVO USUARIO</a>
+			<a href="<?php echo SERVERURL ?>user-new/"><i class="fas fa-plus fa-fw"></i> &nbsp; NUEVO USUARIO</a>
 		</li>
 		<li>
-			<a class="active" href="user-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE USUARIOS</a>
+			<a class="active" href="<?php echo SERVERURL ?>user-list/"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE USUARIOS</a>
 		</li>
 		<li>
-			<a href="user-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR USUARIO</a>
+			<a href="<?php echo SERVERURL ?>user-search/"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR USUARIO</a>
 		</li>
 	</ul>	
 </div>
@@ -47,7 +47,7 @@
 					<td>NOMBRE DE USUARIO</td>
 					<td>ADMIN@ADMIN.COM</td>
 					<td>
-						<a href="user-update.html" class="btn btn-success">
+						<a href="<?php echo SERVERURL ?>user-update/" class="btn btn-success">
 								<i class="fas fa-sync-alt"></i>	
 						</a>
 					</td>
@@ -68,7 +68,7 @@
 					<td>NOMBRE DE USUARIO</td>
 					<td>ADMIN@ADMIN.COM</td>
 					<td>
-						<a href="user-update.html" class="btn btn-success">
+						<a href="<?php echo SERVERURL ?>user-update/" class="btn btn-success">
 								<i class="fas fa-sync-alt"></i>	
 						</a>
 					</td>
@@ -89,7 +89,7 @@
 					<td>NOMBRE DE USUARIO</td>
 					<td>ADMIN@ADMIN.COM</td>
 					<td>
-						<a href="user-update.html" class="btn btn-success">
+						<a href="<?php echo SERVERURL ?>user-update/" class="btn btn-success">
 								<i class="fas fa-sync-alt"></i>	
 						</a>
 					</td>
@@ -110,7 +110,7 @@
 					<td>NOMBRE DE USUARIO</td>
 					<td>ADMIN@ADMIN.COM</td>
 					<td>
-						<a href="user-update.html" class="btn btn-success">
+						<a href="<?php echo SERVERURL ?>user-update/" class="btn btn-success">
 								<i class="fas fa-sync-alt"></i>	
 						</a>
 					</td>
@@ -128,13 +128,13 @@
 	<nav aria-label="Page navigation example">
 		<ul class="pagination justify-content-center">
 			<li class="page-item disabled">
-				<a class="page-link" href="#" tabindex="-1">Previous</a>
+				<a class="page-link" href="<?php echo SERVERURL ?>#" tabindex="-1">Previous</a>
 			</li>
-			<li class="page-item"><a class="page-link" href="#">1</a></li>
-			<li class="page-item"><a class="page-link" href="#">2</a></li>
-			<li class="page-item"><a class="page-link" href="#">3</a></li>
+			<li class="page-item"><a class="page-link" href="<?php echo SERVERURL ?>#">1</a></li>
+			<li class="page-item"><a class="page-link" href="<?php echo SERVERURL ?>#">2</a></li>
+			<li class="page-item"><a class="page-link" href="<?php echo SERVERURL ?>#">3</a></li>
 			<li class="page-item">
-				<a class="page-link" href="#">Next</a>
+				<a class="page-link" href="<?php echo SERVERURL ?>#">Next</a>
 			</li>
 		</ul>
 	</nav>

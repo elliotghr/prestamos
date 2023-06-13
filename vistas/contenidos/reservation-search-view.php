@@ -10,19 +10,19 @@
 <div class="container-fluid">
     <ul class="full-box list-unstyled page-nav-tabs">
         <li>
-            <a href="reservation-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; NUEVO PRÉSTAMO</a>
+            <a href="<?php echo SERVERURL ?>reservation-new/"><i class="fas fa-plus fa-fw"></i> &nbsp; NUEVO PRÉSTAMO</a>
         </li>
         <li>
-            <a href="reservation-reservation.html"><i class="far fa-calendar-alt"></i> &nbsp; RESERVACIONES</a>
+            <a href="<?php echo SERVERURL ?>reservation-reservation/"><i class="far fa-calendar-alt"></i> &nbsp; RESERVACIONES</a>
         </li>
         <li>
-            <a href="reservation-pending.html"><i class="fas fa-hand-holding-usd fa-fw"></i> &nbsp; PRÉSTAMOS</a>
+            <a href="<?php echo SERVERURL ?>reservation-pending/"><i class="fas fa-hand-holding-usd fa-fw"></i> &nbsp; PRÉSTAMOS</a>
         </li>
         <li>
-            <a href="reservation-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; FINALIZADOS</a>
+            <a href="<?php echo SERVERURL ?>reservation-list/"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; FINALIZADOS</a>
         </li>
         <li>
-            <a class="active" href="reservation-search.html"><i class="fas fa-search-dollar fa-fw"></i> &nbsp; BUSCAR POR FECHA</a>
+            <a class="active" href="<?php echo SERVERURL ?>reservation-search/"><i class="fas fa-search-dollar fa-fw"></i> &nbsp; BUSCAR POR FECHA</a>
         </li>
     </ul>
 </div>
@@ -100,12 +100,12 @@
 					<td><span class="badge badge-warning">Reservacion</span></td>
 					<td><span class="badge badge-danger">Pendiente</span></td>
 					<td>
-						<a href="#" class="btn btn-info">
+						<a href="<?php echo SERVERURL ?>#" class="btn btn-info">
 								<i class="fas fa-file-pdf"></i>	
 						</a>
 					</td>
 					<td>
-						<a href="reservation-update.html" class="btn btn-success">
+						<a href="<?php echo SERVERURL ?>reservation-update/" class="btn btn-success">
 								<i class="fas fa-sync-alt"></i>	
 						</a>
 					</td>
@@ -125,12 +125,12 @@
 					<td><span class="badge badge-dark">Finalizado</span></td>
 					<td><span class="badge badge-primary">Cancelado</span></td>
 					<td>
-						<a href="#" class="btn btn-info">
+						<a href="<?php echo SERVERURL ?>#" class="btn btn-info">
 								<i class="fas fa-file-pdf"></i>	
 						</a>
 					</td>
 					<td>
-						<a href="reservation-update.html" class="btn btn-success">
+						<a href="<?php echo SERVERURL ?>reservation-update/" class="btn btn-success">
 								<i class="fas fa-sync-alt"></i>	
 						</a>
 					</td>
@@ -150,12 +150,12 @@
 					<td><span class="badge badge-info">Prestamo</span></td>
 					<td><span class="badge badge-danger">Pendiente</span></td>
 					<td>
-						<a href="#" class="btn btn-info">
+						<a href="<?php echo SERVERURL ?>#" class="btn btn-info">
 								<i class="fas fa-file-pdf"></i>	
 						</a>
 					</td>
 					<td>
-						<a href="reservation-update.html" class="btn btn-success">
+						<a href="<?php echo SERVERURL ?>reservation-update/" class="btn btn-success">
 								<i class="fas fa-sync-alt"></i>	
 						</a>
 					</td>
@@ -175,12 +175,12 @@
 					<td><span class="badge badge-dark">Finalizado</span></td>
 					<td><span class="badge badge-primary">Cancelado</span></td>
 					<td>
-						<a href="#" class="btn btn-info">
+						<a href="<?php echo SERVERURL ?>#" class="btn btn-info">
 								<i class="fas fa-file-pdf"></i>	
 						</a>
 					</td>
 					<td>
-						<a href="reservation-update.html" class="btn btn-success">
+						<a href="<?php echo SERVERURL ?>reservation-update/" class="btn btn-success">
 								<i class="fas fa-sync-alt"></i>	
 						</a>
 					</td>
@@ -198,13 +198,13 @@
 	<nav aria-label="Page navigation example">
 		<ul class="pagination justify-content-center">
 			<li class="page-item disabled">
-				<a class="page-link" href="#" tabindex="-1">Previous</a>
+				<a class="page-link" href="<?php echo SERVERURL ?>#" tabindex="-1">Previous</a>
 			</li>
-			<li class="page-item"><a class="page-link" href="#">1</a></li>
-			<li class="page-item"><a class="page-link" href="#">2</a></li>
-			<li class="page-item"><a class="page-link" href="#">3</a></li>
+			<li class="page-item"><a class="page-link" href="<?php echo SERVERURL ?>#">1</a></li>
+			<li class="page-item"><a class="page-link" href="<?php echo SERVERURL ?>#">2</a></li>
+			<li class="page-item"><a class="page-link" href="<?php echo SERVERURL ?>#">3</a></li>
 			<li class="page-item">
-				<a class="page-link" href="#">Next</a>
+				<a class="page-link" href="<?php echo SERVERURL ?>#">Next</a>
 			</li>
 		</ul>
 	</nav>
