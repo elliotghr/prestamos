@@ -60,4 +60,40 @@ class mainModel
         }
         return $letra . '-' . $numero;
     }
+    //-------- Función para limpiar cadenas --------
+    // Evitar inyección SQL
+    protected static function limpiar_cadena($cadena)
+    {
+        $palabrasProhibidas = array(
+            "<script>",
+            "</script>",
+            "<script src",
+            "<script type=",
+            "SELECT * FROM",
+            "DELETE FROM",
+            "INSERT INTO",
+            "DROP TABLE",
+            "DROP DATABASE",
+            "TRUNCATE TABLE",
+            "SHOW TABLES",
+            "SHOW DATABASE",
+            "<?php",
+            "?>",
+            "--",
+            ">",
+            "<",
+            "[",
+            "]",
+            "^",
+            "==",
+            ";",
+            "::"
+        );
+
+        $cadena = str_ireplace($palabrasProhibidas, "", $cadena);
+        $cadena = stripslashes($cadena);
+        $cadena = trim($cadena);
+
+        return $cadena;
+    }
 }
