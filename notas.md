@@ -38,4 +38,16 @@ Configuramos nuestros archivos de configuración
 
 1. Generamos las vistas de la aplicación en la carpeta contenidos
 2. En nuestra plantilla instanciamos el objeto vistasControlador para hacer uso de su método obtener_vistas_controlador();
-4. Creamos un renderizado condicional, si la vista es _login_ o _404_ no renderizaremos las navbars, si es cualquier otra vista sí renderizaremos las navbars
+3. Creamos un renderizado condicional, si la vista es _login_ o _404_ no renderizaremos las navbars, si es cualquier otra vista sí renderizaremos las navbars
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 09 Modelo principal y conexion a BD
+
+1. Generamos un archivo mainModel.php que tendrá la conexión a la DB y un método de consultas generales (simples)
+2. Dependiendo de si hay una petición ajax o no configuramos la ruta al importar las variables del servidor (SERVER.php)
+3. En nuestra clase MainModel generamos 2 metodos
+   1. conectar()
+      - Generamos la conexión via PDO y
+      - configuramos el juego de caracteres
+   2. ejecutar_consulta_simple()
+      - Generamos este método que recibirá una consulta simple
+      - preparamos y ejecutamos la consulta
