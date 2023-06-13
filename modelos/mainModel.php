@@ -29,4 +29,35 @@ class mainModel
         // retornamos el resultado
         return $sql;
     }
+    // Link de funciones de encriptación -> https://github.com/Carlos007007/SED/blob/master/SED.php
+    //-------- Función para encriptar cadenas --------
+    public function encryption($string)
+    {
+        $output = FALSE;
+        $key = hash('sha256', SECRET_KEY);
+        $iv = substr(hash('sha256', SECRET_IV), 0, 16);
+        $output = openssl_encrypt($string, METHOD, $key, 0, $iv);
+        $output = base64_encode($output);
+        return $output;
+    }
+
+    //-------- Función para desencriptar cadenas --------
+    protected static function decryption($string)
+    {
+        $key = hash('sha256', SECRET_KEY);
+        $iv = substr(hash('sha256', SECRET_IV), 0, 16);
+        $output = openssl_decrypt(base64_decode($string), METHOD, $key, 0, $iv);
+        return $output;
+    }
+
+    //-------- Función para generar códigos aleatorios --------
+    // P879-3 -> ejemplo de número de prestamo
+    protected static function generar_codigo_aleatorio($letra, $longitud, $numero)
+    {
+        for ($i = 1; $i <= $longitud; $i++) {
+            $aleatorio = rand(0, 9);
+            $letra .= $aleatorio;
+        }
+        return $letra . '-' . $numero;
+    }
 }

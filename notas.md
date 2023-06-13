@@ -51,3 +51,8 @@ Configuramos nuestros archivos de configuración
    2. ejecutar_consulta_simple()
       - Generamos este método que recibirá una consulta simple
       - preparamos y ejecutamos la consulta
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 10 modelos de hash y codigos aleatorios
+
+1. Añadimos funciones de encriptación y desencriptación para cadenas, esto con el fin de poder hashear ids por la url y tener un medio de seguridad (que no se puedan manipular los ids por la url)
+2. Generamos el método generar_codigo_aleatorio(), el cual nos servirá para llevar el número de prestamo
