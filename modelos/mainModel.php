@@ -111,6 +111,92 @@ class mainModel
     protected static function verificar_fecha($date)
     {
         $new_date = explode($date, "-");
+        // https://www.php.net/manual/es/function.checkdate.php
         $fecha = checkdate($new_date[1], $new_date[2], $new_date[0]);
+        if (count($new_date) == 3 && $fecha) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    //-------- Función para la paginación --------
+    // Esta función genera el paginador dependiendo de las paginas y # de paginas
+    protected static function paginacion($pagina_actual, $n_paginas, $url, $botones)
+    {
+        // Abrimos la estructura del nav
+        $tabla = '
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+            ';
+
+        // Generamos los botones para regresar a la primera página y regresar una pagina
+        // si estamos en la pag 1 deshabilitamos el botón de retroceso a la primera página, no renderizamos el botón de página anterior
+        if ($pagina_actual == 1) {
+            $tabla .= '
+                <li class="page-item disabled">
+                    <a class="page-link" ><i class="fa-solid fa-angles-left"></i></a>
+                </li>
+                ';
+        } else {
+            // si no estamos en la pag 1 habilitamos el botón de retroceso a la primera página, pasamos la url y renderizamos el botón de página anterior
+            $tabla .= '
+                <li class="page-item">
+                    <a class="page-link" href="' . $url . '1/" ><i class="fa-solid fa-angles-left"></i></a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="' . $url . ($pagina_actual - 1) . '/" >Anterior</i></a>
+                </li>
+                ';
+        }
+
+        // Generamos los botones de las páginas
+        $contador = 0;
+
+        for ($i = $pagina_actual; $i <= $n_paginas; $i++) {
+            // Condicional si queremos controlar el # de botones a mostrar
+            if ($contador >= $botones) {
+                break;
+            }
+            // Condición para detectar si estamos en la págona actual y darle estilos diferentes
+            if ($pagina_actual == $i) {
+                $tabla .= '
+                    <li class="page-item"><a class="page-link active" href="' . $url . $i . '">' . $i . '</a></li>
+                    ';
+            } else {
+                $tabla .= '
+                <li class="page-item"><a class="page-link" href="' . $url . $i . '">' . $i . '</a></li>
+                ';
+            }
+            $contador++;
+        }
+
+
+        // Generamos los botones para ir a la ultima página y adelantar una pagina
+        // si estamos en la ultima pag deshabilitamos el botón de adelantar a la ultima página, no renderizamos el botón de página siguiente
+        if ($pagina_actual == $n_paginas) {
+            $tabla .= '
+                <li class="page-item disabled">
+                    <a class="page-link" ><i class="fa-solid fa-angles-right"></i></a>
+                </li>
+                ';
+        } else {
+            // si no estamos en la ultima página habilitamos el botón de ir a la ultima página, pasamos la url y renderizamos el botón de página siguiente
+            $tabla .= '
+            <li class="page-item">
+                <a class="page-link" href="' . $url . ($pagina_actual + 1) . '/" >Siguiente</i></a>
+            </li>
+                <li class="page-item">
+                    <a class="page-link" href="' . $url . $n_paginas . '/" ><i class="fa-solid fa-angles-right"></i></a>
+                </li>
+                ';
+        }
+
+        // Cerramos la estructura del nav
+        $tabla .= '
+                </ul>
+            </nav>
+            ';
+
+        return $tabla;
     }
 }

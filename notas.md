@@ -61,3 +61,9 @@ Configuramos nuestros archivos de configuración
 
 1. Creamos una función verificar datos que retorna si hubo un error o no al testear un pattern
 2. Creamos una función para verificar que la fecha sea valida
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 13 y 14 Funcion paginador de tablas (parte 1 y 2)
+
+1. creamos un método llamado paginacion() en el mainModel, el cual generará el contenido HTML de nuestra navegación con los parametros: $pagina, $n_paginas, $url, $botones.
+2. Dependiendo de la página en la que nos ubicamos renderizamos o deshabilitamos ciertos botones
+3. Creamos un ciclo para renderizar n cantidad de botones, y generamos un condicional para aplicar un estilo _active_ si es el botón de la página actual o no
