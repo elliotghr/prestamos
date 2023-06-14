@@ -88,3 +88,9 @@ Configuramos nuestros archivos de configuración
    - Este archivo recibirá los datos enviados desde los formularios
    - Asignamos a true la variable $peticionAjax
    - Generamos una condición para ejecutar los controladores si estamos realizando una petición ajax, si no, alguien intenta acceder a nuestro archivo y debemos iniciar y destruir su sesión y redirigirlo al login
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 19 Modelo agregar usuario (CRUD)
+
+1. Creamos nuestro primero método _(agregar_usuario_modelo)_ en nuestro modelo usuariosModelo
+   - recibimos los datos y generamos una consulta preparada, bindeamos los campos, ejecutamos y retornamos el valor de la consulta
+2. Creamos y solo definimos nuestro primer método _(agregar_usuario_controlador)_ del controlador
