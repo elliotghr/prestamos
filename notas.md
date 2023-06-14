@@ -128,3 +128,12 @@ Configuramos nuestros archivos de configuración
         return $sql;
     }
    ```
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 23 Controlador agregar usuario [CRUD] (parte 4)
+
+Seguimos validando y configurando el controlador:
+
+1. Verificamos y encriptamos las claves
+2. Verificamos y validamos los privilegios
+3. Creamos el array que recibirá el modelo
+4. Recibimos la respuesta del modelo y enviamos el resultado codificado en json

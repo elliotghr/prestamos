@@ -26,10 +26,10 @@ class usuarioControlador extends usuarioModelo
         $usuario_clave_1_reg = mainModel::limpiar_cadena($_POST['usuario_clave_1_reg']);
         $usuario_clave_2_reg = mainModel::limpiar_cadena($_POST['usuario_clave_2_reg']);
 
-        $usuario_privilegio_reg = mainModel::limpiar_cadena($_POST['usuario_privilegio_reg']);
+        // $usuario_privilegio_reg = mainModel::limpiar_cadena($_POST['usuario_privilegio_reg']);
 
         //-------- Comprobamos los campos vacios que son requeridos--------
-        if ($usuario_dni_reg == "" || $usuario_nombre_reg == "" || $usuario_apellido_reg == "" || $usuario_usuario_reg == "" || $usuario_clave_1_reg == "" || $usuario_clave_2_reg == "") {
+        if ($usuario_dni_reg == "" || $usuario_nombre_reg == "" || $usuario_apellido_reg == "" || $usuario_usuario_reg == "" || $usuario_clave_1_reg == "" || $usuario_clave_2_reg == "" || !isset($_POST['usuario_privilegio_reg'])) {
             // Generamos una array asociativo con los datos necesarios para nuestro fetch js
             $alerta = [
                 "Alerta" => "simple",
@@ -41,6 +41,7 @@ class usuarioControlador extends usuarioModelo
             echo json_encode($alerta);
             exit();
         }
+        $usuario_privilegio_reg = mainModel::limpiar_cadena($_POST['usuario_privilegio_reg']);
 
         //-------- Comprobamos los patterns --------
         // Comprobamos directamente el pattern si es un input requerido
@@ -192,6 +193,71 @@ class usuarioControlador extends usuarioModelo
                 echo json_encode($alerta);
                 exit();
             }
+            // Comprobación de claves
+            // Primero verificamos que sean iguales
+            if ($usuario_clave_1_reg != $usuario_clave_2_reg) {
+                // Si no son iguales mandamos un error
+                $alerta = [
+                    "Alerta" => "simple",
+                    "Titulo" => "Ocurrió un error inesperado",
+                    "Texto" => "Las claves no coinciden",
+                    "Tipo" => "error",
+                ];
+                echo json_encode($alerta);
+                exit();
+            } else {
+                // Si son iguales encriptamos nuestro pass
+                $clave = mainModel::encryption($usuario_clave_1_reg);
+            }
+            // Comprobamos privilegios
+            if ($usuario_privilegio_reg < 1 || $usuario_privilegio_reg > 3) {
+                $alerta = [
+                    "Alerta" => "simple",
+                    "Titulo" => "Ocurrió un error inesperado",
+                    "Texto" => "El nivel de privilegio no es válido, elija otro",
+                    "Tipo" => "error",
+                ];
+                echo json_encode($alerta);
+                exit();
+            }
+
+            // Si todo es válido, entonces, generamos el array que pasaremos al modelo
+
+            $datos_usuario_reg = [
+                "DNI" => $usuario_dni_reg,
+                "Nombre" => $usuario_nombre_reg,
+                "Apellido" => $usuario_apellido_reg,
+                "Telefono" => $usuario_telefono_reg,
+                "Direccion" => $usuario_direccion_reg,
+                "Email" => $usuario_email_reg,
+                "Usuario" => $usuario_usuario_reg,
+                "Clave" => $clave,
+                "Estado" => "Activa",
+                "Privilegio" => $usuario_privilegio_reg
+            ];
+
+            $agregar_usuario = usuarioModelo::agregar_usuario_modelo($datos_usuario_reg);
+            $alerta = [];
+            if ($agregar_usuario->rowCount() > 0) {
+                $alerta = [
+                    "Alerta" => "limpiar",
+                    "Titulo" => "!Éxito!",
+                    "Texto" => "Usuario registrado con éxito",
+                    "Tipo" => "success",
+                ];
+                echo json_encode($alerta);
+                exit();
+            } else {
+                $alerta = [
+                    "Alerta" => "simple",
+                    "Titulo" => "Ocurrió un error inesperado",
+                    "Texto" => "Hubo un error al registrar el usuario",
+                    "Tipo" => "error",
+                ];
+                echo json_encode($alerta);
+                exit();
+            }
+            echo json_encode($alerta);
         }
     }
 }
