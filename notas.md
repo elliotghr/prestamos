@@ -137,3 +137,10 @@ Seguimos validando y configurando el controlador:
 2. Verificamos y validamos los privilegios
 3. Creamos el array que recibirá el modelo
 4. Recibimos la respuesta del modelo y enviamos el resultado codificado en json
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 24 Modelo iniciar sesion
+
+1. Creamos el archivo loginModelo, loginControlador y loginAjax para crear el inicio de sesión
+   - Creamos sus clases correspondientes del modelo y controlador
+   - Dejamos la parte del else en el loginAjax por si intentan acceder directamente a él
+   - Creamos el método iniciar_sesion_modelo en el Modelo para obtener los datos del usuario si el usuario, clave y estado son válidos
