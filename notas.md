@@ -94,3 +94,13 @@ Configuramos nuestros archivos de configuración
 1. Creamos nuestro primero método _(agregar_usuario_modelo)_ en nuestro modelo usuariosModelo
    - recibimos los datos y generamos una consulta preparada, bindeamos los campos, ejecutamos y retornamos el valor de la consulta
 2. Creamos y solo definimos nuestro primer método _(agregar_usuario_controlador)_ del controlador
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 20 Controlador agregar usuario [CRUD] (parte 1)
+
+1. Definimos los metadatos en nuestra vista user-new (atributos)
+   - metodo
+   - action
+   - data-form
+   - clase .FormularioAjax
+2. El archivo usuarioAjax es un archivo intermediario para recibir los datos antes de enviarlos al controlador, comprobamos la existencia de alguno de nuestros inputs, si coincide, verificamos otros campos obligatorios e imprimimos con echo el método que ocuparemos
+3. En el controlador recibimos cada uno de los campos, validamos los campos obligatorios, en caso de error devolvemos un array asociativo codificado a json con las llaves necesarias para mostrar las alertas

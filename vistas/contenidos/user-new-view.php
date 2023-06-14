@@ -22,7 +22,7 @@
 </div>
 
 <div class="container-fluid">
-	<form action="" class="form-neon FormularioAjax" action="" method="POST" data-form="" autocomplete="off">
+	<form class="form-neon FormularioAjax" action="<?php echo SERVERURL ?>ajax/usuarioAjax.php" method="POST" data-form="save" autocomplete="off">
 		<fieldset>
 			<legend><i class="far fa-address-card"></i> &nbsp; Información personal</legend>
 			<div class="container-fluid">
@@ -37,13 +37,13 @@
 					<div class="col-12 col-md-4">
 						<div class="form-group">
 							<label for="usuario_nombre" class="bmd-label-floating">Nombres</label>
-							<input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}" class="form-control" name="usuario_nombre_reg" id="usuario_nombre" maxlength="35">
+							<input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}" class="form-control" name="usuario_nombre_reg" id="usuario_nombre" maxlength="35" required>
 						</div>
 					</div>
 					<div class="col-12 col-md-4">
 						<div class="form-group">
 							<label for="usuario_apellido" class="bmd-label-floating">Apellidos</label>
-							<input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}" class="form-control" name="usuario_apellido_reg" id="usuario_apellido" maxlength="35">
+							<input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}" class="form-control" name="usuario_apellido_reg" id="usuario_apellido" maxlength="35" required>
 						</div>
 					</div>
 					<div class="col-12 col-md-6">
@@ -69,7 +69,7 @@
 					<div class="col-12 col-md-6">
 						<div class="form-group">
 							<label for="usuario_usuario" class="bmd-label-floating">Nombre de usuario</label>
-							<input type="text" pattern="[a-zA-Z0-9]{1,35}" class="form-control" name="usuario_usuario_reg" id="usuario_usuario" maxlength="35">
+							<input type="text" pattern="[a-zA-Z0-9]{1,35}" class="form-control" name="usuario_usuario_reg" id="usuario_usuario" maxlength="35" required>
 						</div>
 					</div>
 					<div class="col-12 col-md-6">
@@ -103,7 +103,7 @@
 						<p><span class="badge badge-success">Edición</span> Permisos para registrar y actualizar</p>
 						<p><span class="badge badge-dark">Registrar</span> Solo permisos para registrar</p>
 						<div class="form-group">
-							<select class="form-control" name="usuario_privilegio_reg">
+							<select class="form-control" name="usuario_privilegio_reg" required>
 								<option value="" selected="" disabled="">Seleccione una opción</option>
 								<option value="1">Control total</option>
 								<option value="2">Edición</option>
