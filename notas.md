@@ -74,3 +74,17 @@ Configuramos nuestros archivos de configuración
 2. Incluimos el script de este archivo en Scripts.php
 3. Haciendo uso de sweet alert 2 creamos una función que mostrará cierta alerta dependiendo del tipo de alerta que le pasemos, el objeto de las alertas se alimentará del json que le pasemos
 4. Creamos un envío de datos con fetch con los atributos del formulario
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 18 Modelo y controlador usuario
+
+1. Creamos nuestro usuarioModelo
+   - Incluimos el mainModel
+   - Heredamos el mainModel
+2. Creamos nuestro usuarioControlador
+   - Dependiendo de si realizamos una petición AJAX ejecutaremos el controlador desde el usuarioAjax, si no, entonces ejecutamos desde index.php, de ahi depende la ruta de importación del usuarioModelo
+   - Incluimos el usuarioModelo
+   - Heredamos el usuarioModelo
+3. Creamos nuestro usuarioAjax
+   - Este archivo recibirá los datos enviados desde los formularios
+   - Asignamos a true la variable $peticionAjax
+   - Generamos una condición para ejecutar los controladores si estamos realizando una petición ajax, si no, alguien intenta acceder a nuestro archivo y debemos iniciar y destruir su sesión y redirigirlo al login
