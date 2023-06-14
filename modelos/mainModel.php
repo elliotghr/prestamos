@@ -25,7 +25,7 @@ class mainModel
         // Haciendo uso del método conectar preparamos la consulta
         $sql = self::conectar()->prepare($consulta);
         // Ejecutamos
-        $sql = $sql->execute();
+        $sql->execute();
         // retornamos el resultado
         return $sql;
     }

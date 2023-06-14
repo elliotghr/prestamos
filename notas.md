@@ -104,3 +104,27 @@ Configuramos nuestros archivos de configuración
    - clase .FormularioAjax
 2. El archivo usuarioAjax es un archivo intermediario para recibir los datos antes de enviarlos al controlador, comprobamos la existencia de alguno de nuestros inputs, si coincide, verificamos otros campos obligatorios e imprimimos con echo el método que ocuparemos
 3. En el controlador recibimos cada uno de los campos, validamos los campos obligatorios, en caso de error devolvemos un array asociativo codificado a json con las llaves necesarias para mostrar las alertas
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 21 Controlador agregar usuario [CRUD] (parte 2)
+
+1. Comprobamos la integridad de los datos
+   - Verificamos el pattern de cada uno de los inputs requeridos
+   - Si no es un campo requerido primero validamos que el input tenga valor y posteriormente validamos su pattern
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 22 Controlador agregar usuario [CRUD] (parte 3)
+
+1. Validamos los campos unicos, comprobamos con la DB que no existan
+2. ? Corrección de el main model, linea 22
+   ```php
+    //-------- Función para ejecutar consultas simples --------
+    protected static function ejecutar_consulta_simple($consulta)
+    {
+        // Haciendo uso del método conectar preparamos la consulta
+        $sql = self::conectar()->prepare($consulta);
+        // Ejecutamos
+        $sql = $sql->execute(); // CORRECCIÓN -> cambiamos de esto
+        $sql->execute(); // CORRECCIÓN -> a esto
+        // retornamos el resultado
+        return $sql;
+    }
+   ```
