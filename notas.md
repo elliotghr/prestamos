@@ -144,3 +144,14 @@ Seguimos validando y configurando el controlador:
    - Creamos sus clases correspondientes del modelo y controlador
    - Dejamos la parte del else en el loginAjax por si intentan acceder directamente a él
    - Creamos el método iniciar_sesion_modelo en el Modelo para obtener los datos del usuario si el usuario, clave y estado son válidos
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 25 Controlador iniciar sesion (parte 1)
+
+1. El formulario no será enviado por ajax, el action se deja vacío
+2. Recibimos los datos en el formulario
+   - Verificamos que no vengan vacios
+   - Verificamos su integridad
+   - encriptamos la clave para compararla contra la DB
+   - Solicitamos los datos al modelo
+     - En caso de que no coincidan los datos mandamos un error
+     - En casi de que coincidan los obtendremos para generar las variables de sesión
