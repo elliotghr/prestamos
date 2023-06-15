@@ -115,4 +115,31 @@ class loginControlador extends loginModelo
             return header("Location: " . SERVERURL . "login/");
         }
     }
+    //-------- Controlador cerrar sesión --------
+    public function cerrar_session_controlador()
+    {
+        // Reanudamos la sesión
+        session_start(['name' => 'PRESTAMOS']);
+        // Creamos estas dos variables ya que el botón de cerrar enviará el token y el usuario
+        $token = mainModel::decryption($_POST['token']);
+        $usuario = mainModel::decryption($_POST['usuario']);
+        // Antes de cerrar la sesión
+        // Comprobamos que los valores sean identicos a las variables de sesión
+        if ($token == $_SESSION["token_spm"] && $usuario == $_SESSION["nombre_spm"]) {
+            // Destruimos la sesión si es identico
+            session_unset();
+            session_destroy();
+            header("Location: " . SERVERURL . "login/");
+        } else {
+            // Mandamos un error si no se pudo cerrar la sesión
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Ocurrió un error inesperado",
+                "Texto" => "No pudimos cerrar tu sesión",
+                "Tipo" => "error",
+            ];
+            echo json_encode($alerta);
+            exit();
+        }
+    }
 }

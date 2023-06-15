@@ -187,3 +187,10 @@ Ya que el acceso a las vistas de Usuarios solo está permitido para usuarios con
    }
    ```
    - No aplica para user-update ya que este sí será para cualquier usuario, para acutalizar sus propios datos
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 29 Controlador cerrar sesion
+
+1. Creamos un método en el controlador para el cierre de sesión
+2. Guardamos en variables los datos que nos envíe el botón
+   - En caso de que sean identicos a las variables de sesión cerramos la sesión
+   - En caso contrario enviamos una alerta de fallo al intentar cerrar la sesión
