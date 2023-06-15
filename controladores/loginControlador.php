@@ -13,7 +13,7 @@ class loginControlador extends loginModelo
 {
     //-------- Controlador iniciar sesión --------
     // Los controladores deben ser publicos y no estaticos
-    protected static function iniciar_sesion_controlador()
+    public function iniciar_sesion_controlador()
     {
         $usuario_log = mainModel::limpiar_cadena($_POST['usuario_log']);
         $clave_log = mainModel::limpiar_cadena($_POST['clave_log']);
@@ -29,6 +29,7 @@ class loginControlador extends loginModelo
                     confirmButtonText: "Aceptar",
                 });
             </script>';
+            exit();
         }
         //-------- Verificamos la integridad de los datos --------
         if (mainModel::verificar_datos("[a-zA-Z0-9]{1,35}", $usuario_log)) {
@@ -41,6 +42,7 @@ class loginControlador extends loginModelo
                     confirmButtonText: "Aceptar",
                 });
             </script>';
+            exit();
         }
         if (mainModel::verificar_datos("[a-zA-Z0-9$@.-]{7,100}", $clave_log)) {
             echo '
@@ -52,21 +54,39 @@ class loginControlador extends loginModelo
                     confirmButtonText: "Aceptar",
                 });
             </script>';
+            exit();
         }
 
         //-------- Verificamos la integridad de los datos --------
         $clave = mainModel::encryption($clave_log);
 
+        // Enviamos los datos al modelo
         $datos_login = [
             "Usuario" => $usuario_log,
             "Clave" => $clave
         ];
 
+        // Obtenemos los datos
         $datos_usuario = loginModelo::iniciar_sesion_modelo($datos_login);
 
+        // Si trae los datos del usuario...
         if ($datos_usuario->rowCount() > 0) {
-            $datos_usuario->fetch();
+            $row = $datos_usuario->fetch();
+            // Creamos variables de sesión
+            // Inciamos la session y le asignamos un nombre
+            session_start(["name" => "PRESTAMOS"]);
+            // Creamos variables que nos servirán para mostrar sus datos
+            $_SESSION["id_spm"] =  $row["usuario_id "];
+            $_SESSION["nombre_spm"] =  $row["usuario_nombre"];
+            $_SESSION["apellido_spm"] =  $row["usuario_apellido"];
+            $_SESSION["usuario_spm"] =  $row["usuario_usuario"];
+            $_SESSION["privilegio_spm"] =  $row["usuario_privilegio"];
+            // Creamos un token para cerrar su sesión de manera segura
+            $_SESSION["token_spm"] =  md5(uniqid(mt_rand(), true));
+
+            return header("Location: " . SERVERURL . "home/");
         } else {
+            // Si no trae los datos del usuario le enviamos el mensaje de error
             echo '
             <script>
                 Swal.fire({
@@ -76,6 +96,7 @@ class loginControlador extends loginModelo
                     confirmButtonText: "Aceptar",
                 });
             </script>';
+            exit();
         }
     }
 }

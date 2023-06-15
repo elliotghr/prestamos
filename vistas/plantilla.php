@@ -20,6 +20,8 @@
     if ($vistas == "login" || $vistas == "404") {
         require_once "./vistas/contenidos/" . $vistas . "-view.php";
     } else {
+        // Iniciamos sesión para uisar las variabless de sesión
+        session_start(["name" => "PRESTAMOS"]);
     ?>
         <!-- Main container -->
         <main class="full-box main-container">

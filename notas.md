@@ -155,3 +155,12 @@ Seguimos validando y configurando el controlador:
    - Solicitamos los datos al modelo
      - En caso de que no coincidan los datos mandamos un error
      - En casi de que coincidan los obtendremos para generar las variables de sesión
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 26 Controlador iniciar sesion (parte 2)
+
+1. Corregimos nuestro controlador a public y no estatico, controladores deben ser publicos y no estaticos
+2. Generamos las variables de session necesarias y redireccionamos a nuestra home
+3. modificamos la view para enviar los datos al controlador
+4. En nuestra vista login-view verificamos la existencia de las variables por POST para instanciar el controlador y hacer uso del método para comprobar las credenciales
+5. En la plantilla (donde se alojan las vistas) iniciamos la sessión con su nombre correspondiente
+6. Y en la NavLateral imprimimos los valores del usuario
