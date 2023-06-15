@@ -1,3 +1,10 @@
+<?php
+if ($_SESSION["privilegio_spm"] != 1) {
+	$instancia_login->forzar_cierre_sesion_controlador();
+	exit();
+}
+?>
+
 <div class="full-box page-header">
 	<h3 class="text-left">
 		<i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE USUARIOS
@@ -18,7 +25,7 @@
 		<li>
 			<a href="<?php echo SERVERURL ?>user-search/"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR USUARIO</a>
 		</li>
-	</ul>	
+	</ul>
 </div>
 
 <div class="container-fluid">
@@ -38,7 +45,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="text-center" >
+				<tr class="text-center">
 					<td>1</td>
 					<td>03045643</td>
 					<td>NOMBRE DE USUARIO</td>
@@ -48,18 +55,18 @@
 					<td>ADMIN@ADMIN.COM</td>
 					<td>
 						<a href="<?php echo SERVERURL ?>user-update/" class="btn btn-success">
-								<i class="fas fa-sync-alt"></i>	
+							<i class="fas fa-sync-alt"></i>
 						</a>
 					</td>
 					<td>
 						<form action="">
 							<button type="button" class="btn btn-warning">
-									<i class="far fa-trash-alt"></i>
+								<i class="far fa-trash-alt"></i>
 							</button>
 						</form>
 					</td>
 				</tr>
-				<tr class="text-center" >
+				<tr class="text-center">
 					<td>2</td>
 					<td>03045643</td>
 					<td>NOMBRE DE USUARIO</td>
@@ -69,18 +76,18 @@
 					<td>ADMIN@ADMIN.COM</td>
 					<td>
 						<a href="<?php echo SERVERURL ?>user-update/" class="btn btn-success">
-								<i class="fas fa-sync-alt"></i>	
+							<i class="fas fa-sync-alt"></i>
 						</a>
 					</td>
 					<td>
 						<form action="">
 							<button type="button" class="btn btn-warning">
-									<i class="far fa-trash-alt"></i>
+								<i class="far fa-trash-alt"></i>
 							</button>
 						</form>
 					</td>
 				</tr>
-				<tr class="text-center" >
+				<tr class="text-center">
 					<td>3</td>
 					<td>03045643</td>
 					<td>NOMBRE DE USUARIO</td>
@@ -90,18 +97,18 @@
 					<td>ADMIN@ADMIN.COM</td>
 					<td>
 						<a href="<?php echo SERVERURL ?>user-update/" class="btn btn-success">
-								<i class="fas fa-sync-alt"></i>	
+							<i class="fas fa-sync-alt"></i>
 						</a>
 					</td>
 					<td>
 						<form action="">
 							<button type="button" class="btn btn-warning">
-									<i class="far fa-trash-alt"></i>
+								<i class="far fa-trash-alt"></i>
 							</button>
 						</form>
 					</td>
 				</tr>
-				<tr class="text-center" >
+				<tr class="text-center">
 					<td>4</td>
 					<td>03045643</td>
 					<td>NOMBRE DE USUARIO</td>
@@ -111,13 +118,13 @@
 					<td>ADMIN@ADMIN.COM</td>
 					<td>
 						<a href="<?php echo SERVERURL ?>user-update/" class="btn btn-success">
-								<i class="fas fa-sync-alt"></i>	
+							<i class="fas fa-sync-alt"></i>
 						</a>
 					</td>
 					<td>
 						<form action="">
 							<button type="button" class="btn btn-warning">
-									<i class="far fa-trash-alt"></i>
+								<i class="far fa-trash-alt"></i>
 							</button>
 						</form>
 					</td>

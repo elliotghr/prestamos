@@ -171,3 +171,19 @@ Seguimos validando y configurando el controlador:
    - Destruimos sesión
    - Redirigimos al login
 2. En la plantilla, cuando se renderizan las vistas, creamos una validación, si no vienen nuestras variables de sessión hacemos uso del método anterior (forzar_cierre_sesion_controlador)
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 28 Seguridad en vistas del usuario
+
+Ya que el acceso a las vistas de Usuarios solo está permitido para usuarios con privilegio 1...
+
+1. En la NavLateral creamos una validación para mostrar el menú de Usuarios a los que tengan privilegio 1
+2. En la vista home también aplicamos estos cambios para el recuadro de Usuarios
+3. Ahora bloqueamos el acceso por la URL, poniendo una validación a cada vista de usuarios
+   ```php
+   <!-- Al inicio de cada vista -->
+   if ($_SESSION["privilegio_spm"] != 1) {
+   	$instancia_login->forzar_cierre_sesion_controlador();
+   	exit();
+   }
+   ```
+   - No aplica para user-update ya que este sí será para cualquier usuario, para acutalizar sus propios datos

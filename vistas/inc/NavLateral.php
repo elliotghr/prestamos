@@ -16,7 +16,7 @@
                 </li>
 
                 <li>
-                    <a href="<?php echo SERVERURL ?>#" class="nav-btn-submenu"><i class="fas fa-users fa-fw"></i> &nbsp; Clientes <i class="fas fa-chevron-down"></i></a>
+                    <a href="#" class="nav-btn-submenu"><i class="fas fa-users fa-fw"></i> &nbsp; Clientes <i class="fas fa-chevron-down"></i></a>
                     <ul>
                         <li>
                             <a href="<?php echo SERVERURL ?>client-new/"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Cliente</a>
@@ -31,7 +31,7 @@
                 </li>
 
                 <li>
-                    <a href="<?php echo SERVERURL ?>#" class="nav-btn-submenu"><i class="fas fa-pallet fa-fw"></i> &nbsp; Items <i class="fas fa-chevron-down"></i></a>
+                    <a href="#" class="nav-btn-submenu"><i class="fas fa-pallet fa-fw"></i> &nbsp; Items <i class="fas fa-chevron-down"></i></a>
                     <ul>
                         <li>
                             <a href="<?php echo SERVERURL ?>item-new/"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar item</a>
@@ -46,7 +46,7 @@
                 </li>
 
                 <li>
-                    <a href="<?php echo SERVERURL ?>#" class="nav-btn-submenu"><i class="fas fa-file-invoice-dollar fa-fw"></i> &nbsp; Préstamos <i class="fas fa-chevron-down"></i></a>
+                    <a href="#" class="nav-btn-submenu"><i class="fas fa-file-invoice-dollar fa-fw"></i> &nbsp; Préstamos <i class="fas fa-chevron-down"></i></a>
                     <ul>
                         <li>
                             <a href="<?php echo SERVERURL ?>reservation-new/"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo préstamo</a>
@@ -65,21 +65,30 @@
                         </li>
                     </ul>
                 </li>
+                <?php
+                // Creamos una condicional dependiendo del nivel de privilegios
+                // Solo el privilegio 1 puede acceder a esta parte del sistema
+                if ($_SESSION["privilegio_spm"] == 1) {
 
-                <li>
-                    <a href="<?php echo SERVERURL ?>#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Usuarios <i class="fas fa-chevron-down"></i></a>
-                    <ul>
-                        <li>
-                            <a href="<?php echo SERVERURL ?>user-new/"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo usuario</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo SERVERURL ?>user-list/"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de usuarios</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo SERVERURL ?>user-search/"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar usuario</a>
-                        </li>
-                    </ul>
-                </li>
+                ?>
+                    <li>
+                        <a href="#" class="nav-btn-submenu"><i class="fas  fa-user-secret fa-fw"></i> &nbsp; Usuarios <i class="fas fa-chevron-down"></i></a>
+                        <ul>
+                            <li>
+                                <a href="<?php echo SERVERURL ?>user-new/"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo usuario</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo SERVERURL ?>user-list/"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de usuarios</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo SERVERURL ?>user-search/"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar usuario</a>
+                            </li>
+                        </ul>
+                    </li>
+                <?php
+                }
+
+                ?>
 
                 <li>
                     <a href="<?php echo SERVERURL ?>company/"><i class="fas fa-store-alt fa-fw"></i> &nbsp; Empresa</a>
