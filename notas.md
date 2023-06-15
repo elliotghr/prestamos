@@ -164,3 +164,10 @@ Seguimos validando y configurando el controlador:
 4. En nuestra vista login-view verificamos la existencia de las variables por POST para instanciar el controlador y hacer uso del método para comprobar las credenciales
 5. En la plantilla (donde se alojan las vistas) iniciamos la sessión con su nombre correspondiente
 6. Y en la NavLateral imprimimos los valores del usuario
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 27 Controlador forzar cierre de sesion
+
+1. Creamos el método forzar_cierre_sesion_controlador() para forzar el cierre de sesión y redirigir al usuario al login cuando no se autentique e intente ingresar a nuestro sistema
+   - Destruimos sesión
+   - Redirigimos al login
+2. En la plantilla, cuando se renderizan las vistas, creamos una validación, si no vienen nuestras variables de sessión hacemos uso del método anterior (forzar_cierre_sesion_controlador)

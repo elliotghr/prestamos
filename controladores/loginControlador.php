@@ -99,4 +99,20 @@ class loginControlador extends loginModelo
             exit();
         }
     }
+    //-------- Controlador forzar cierre de session --------
+    // cuando un usuario intente entrar a nuestro sistema y no tenga los permisos para eso
+    public function forzar_cierre_sesion_controlador()
+    {
+        // destruimos la session
+        session_unset();
+        session_destroy();
+        // Verificamos si se envían encabezados con php, si se envían no podemos ocupar el método header)=
+        if (headers_sent()) {
+            // redirección con js 
+            return "<script> location.href='" . SERVERURL . "login/';</script>";
+        } else {
+            // redirección con php
+            return header("Location: " . SERVERURL . "login/");
+        }
+    }
 }

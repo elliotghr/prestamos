@@ -22,6 +22,13 @@
     } else {
         // Iniciamos sesión para uisar las variabless de sesión
         session_start(["name" => "PRESTAMOS"]);
+        require_once "./controladores/loginControlador.php";
+
+        $instancia_login = new loginControlador();
+        if (!isset($_SESSION["token_spm"]) || !isset($_SESSION["nombre_spm"]) || !isset($_SESSION["usuario_spm"]) || !isset($_SESSION["privilegio_spm"])) {
+            $instancia_login->forzar_cierre_sesion_controlador();
+            exit();
+        }
     ?>
         <!-- Main container -->
         <main class="full-box main-container">
