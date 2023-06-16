@@ -125,11 +125,16 @@ class loginControlador extends loginModelo
         $usuario = mainModel::decryption($_POST['usuario']);
         // Antes de cerrar la sesión
         // Comprobamos que los valores sean identicos a las variables de sesión
-        if ($token == $_SESSION["token_spm"] && $usuario == $_SESSION["nombre_spm"]) {
+        if ($token == $_SESSION["token_spm"] && $usuario == $_SESSION["usuario_spm"]) {
             // Destruimos la sesión si es identico
             session_unset();
             session_destroy();
-            header("Location: " . SERVERURL . "login/");
+            $alerta = [
+                "Alerta" => "redireccionar",
+                "URL" => SERVERURL . "login/",
+            ];
+            echo json_encode($alerta);
+            exit();
         } else {
             // Mandamos un error si no se pudo cerrar la sesión
             $alerta = [

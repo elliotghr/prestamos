@@ -194,3 +194,14 @@ Ya que el acceso a las vistas de Usuarios solo está permitido para usuarios con
 2. Guardamos en variables los datos que nos envíe el botón
    - En caso de que sean identicos a las variables de sesión cerramos la sesión
    - En caso contrario enviamos una alerta de fallo al intentar cerrar la sesión
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 30 Script LogOut
+
+Vamos a generar el archivo js para detectar el click y cerrar la sesión
+
+1. Creamos nuestro archivo inc/LogOut.php y lo incluimos en la plantilla.php cuando hay un log correcto
+2. quitamos el script JS que viene por defecto en la plantilla asignado al botón de logout
+3. Generamos el código para detectar el click en nuestro botón
+   - encriptamos el token y el usuario
+   - enviamos el código via fetch a nuestro archivo loginAjax
+4. En el loginAjax validamos que vengan las variables por post, en caso de que si vengan las dos variables entonces instanciamos al controlador y hacemos uso del método cerrar_session_controlador(), el cual comparará los tokens y los usuarios y cerrará o no la sesión

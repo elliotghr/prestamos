@@ -43,6 +43,7 @@
             </section>
         </main>
     <?php
+        include "vistas/inc/LogOut.php";
     }
     ?>
     <!-- Include JavaScript files -->

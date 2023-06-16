@@ -64,7 +64,7 @@ const alertasAjax = (alerta) => {
       title: alerta.Titulo,
       text: alerta.Texto,
       icon: alerta.Tipo,
-      showCancelButton: true,
+      showCancelButton: false,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Confirmar",

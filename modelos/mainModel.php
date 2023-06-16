@@ -31,7 +31,7 @@ class mainModel
     }
     // Link de funciones de encriptación -> https://github.com/Carlos007007/SED/blob/master/SED.php
     //-------- Función para encriptar cadenas --------
-    protected static function encryption($string)
+    public function encryption($string)
     {
         $output = FALSE;
         $key = hash('sha256', SECRET_KEY);
