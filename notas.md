@@ -222,3 +222,21 @@ En el método paginador_usuario_controlador de nuestro controlador de usuarios
 - Generamos otra query si no hay una busqueda
 - La mandamos a la DB
 - Traemos los datos y el número total de resultados para generar mi n_paginas
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 33 Controlador paginador usuarios (parte 3)
+
+Trabajando en el controlador usuarioControlador
+
+1. Se añadieron querys para traer los totales, esto se almacena en $consulta_total
+2. Se lanzan las querys a la DB y con esos datos se renderiza la tabla copiando la estructura HTML de la vista
+   - Dependiendo del resultado de la DB se muestran los datos o se envia un mensaje de que no hay registros o recargar el listado
+   - Al final de renderizar la tabla se concatena los bototnes de navegación usando el método paginación del mainModel
+
+En la vista user-list
+
+1. Se elimina el marcado HTML (ya que el controlador lo renderizará)
+2. Se instancia e imprime el método paginador_usuario_controlador del controlador y se pasan las variables necesarias para su funcionamiento
+
+En la plantilla.php
+
+1. Después de comprobar el inicio de sesión se crean las variables _$pagina_ y _$registros_ para que nuestra vista las puede utilizar en el método del controlador

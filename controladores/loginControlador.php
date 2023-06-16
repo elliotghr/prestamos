@@ -76,7 +76,7 @@ class loginControlador extends loginModelo
             // Inciamos la session y le asignamos un nombre
             session_start(["name" => "PRESTAMOS"]);
             // Creamos variables que nos servirán para mostrar sus datos
-            $_SESSION["id_spm"] =  $row["usuario_id "];
+            $_SESSION["id_spm"] =  $row["usuario_id"];
             $_SESSION["nombre_spm"] =  $row["usuario_nombre"];
             $_SESSION["apellido_spm"] =  $row["usuario_apellido"];
             $_SESSION["usuario_spm"] =  $row["usuario_usuario"];

@@ -22,6 +22,10 @@
     } else {
         // Iniciamos sesión para uisar las variabless de sesión
         session_start(["name" => "PRESTAMOS"]);
+        // Definimos variables para el paginador
+        $pagina = explode("/", $_GET["views"]);
+        $registros = (int) 10;
+
         require_once "./controladores/loginControlador.php";
 
         $instancia_login = new loginControlador();

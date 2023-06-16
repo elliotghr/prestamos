@@ -141,7 +141,7 @@ class mainModel
             // si no estamos en la pag 1 habilitamos el botón de retroceso a la primera página, pasamos la url y renderizamos el botón de página anterior
             $tabla .= '
                 <li class="page-item">
-                    <a class="page-link" href="' . $url . '1/" ><i class="fa-solid fa-angles-left"></i></a>
+                    <a class="page-link" href="' . $url . '1/" ><i class="fa-solid fa-angles-left"><<<</i></a>
                 </li>
                 <li class="page-item">
                     <a class="page-link" href="' . $url . ($pagina_actual - 1) . '/" >Anterior</i></a>
@@ -186,7 +186,7 @@ class mainModel
                 <a class="page-link" href="' . $url . ($pagina_actual + 1) . '/" >Siguiente</i></a>
             </li>
                 <li class="page-item">
-                    <a class="page-link" href="' . $url . $n_paginas . '/" ><i class="fa-solid fa-angles-right"></i></a>
+                    <a class="page-link" href="' . $url . $n_paginas . '/" >>>><i class="fa-solid fa-angles-right"></i></a>
                 </li>
                 ';
         }

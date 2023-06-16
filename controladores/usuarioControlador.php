@@ -293,18 +293,100 @@ class usuarioControlador extends usuarioModelo
         // Si estamos haciendo una busqueda...
         if (isset($busqueda) && $busqueda != "") {
             $consulta = "SELECT * FROM usuario WHERE ((usuario_id != $id AND usuario_id != 1) AND (usuario_dni LIKE '%$busqueda%' OR usuario_usuario LIKE '%$busqueda%' OR usuario_apellido LIKE '%$busqueda%' OR usuario_telefono LIKE '%$busqueda%' OR usuario_direccion LIKE '%$busqueda%' OR usuario_email LIKE '%$busqueda%' OR usuario_usuario LIKE '%$busqueda%')) ORDER BY usuario_nombre ASC LIMIT $inicio, $registros";
+            $consulta_total = "SELECT * FROM usuario WHERE ((usuario_id != $id AND usuario_id != 1) AND (usuario_dni LIKE '%$busqueda%' OR usuario_usuario LIKE '%$busqueda%' OR usuario_apellido LIKE '%$busqueda%' OR usuario_telefono LIKE '%$busqueda%' OR usuario_direccion LIKE '%$busqueda%' OR usuario_email LIKE '%$busqueda%' OR usuario_usuario LIKE '%$busqueda%')) ORDER BY usuario_nombre ASC";
         } else {
             // Si no hacemos una busqueda total
             // omitimos el mismo usuario que hace la busqueda
             // omitimos al usuario #1 (el administrador)
             $consulta = "SELECT * FROM usuario WHERE usuario_id != $id AND usuario_id != 1 ORDER BY usuario_nombre ASC LIMIT $inicio, $registros";
+            $consulta_total = "SELECT COUNT(*) FROM usuario WHERE usuario_id != $id AND usuario_id != 1 ORDER BY usuario_nombre ASC";
+            // $consulta = "SELECT * FROM usuario LIMIT $inicio, $registros";
         }
-
-        $conexion = mainModel::conectar()->query($consulta);
-
-        $datos = $conexion->fetchAll(PDO::FETCH_ASSOC);
-        $total = (int) $conexion->fetchColumn();
+        // Traemos los datos
+        $get_consulta = mainModel::conectar()->query($consulta);
+        $datos = $get_consulta->fetchAll(PDO::FETCH_ASSOC);
+        // Traemos el conteo de registros
+        $get_total = mainModel::conectar()->query($consulta_total);
+        $total = $get_total->fetchColumn();
 
         $n_paginas = ceil($total / $registros);
+
+        // Primera parte de la tabla
+        $tabla .= '
+        <div class="table-responsive">
+		<table class="table table-dark table-sm">
+			<thead>
+				<tr class="text-center roboto-medium">
+					<th>#</th>
+					<th>DNI</th>
+					<th>NOMBRE</th>
+					<th>TELÉFONO</th>
+					<th>USUARIO</th>
+					<th>EMAIL</th>
+					<th>ACTUALIZAR</th>
+					<th>ELIMINAR</th>
+				</tr>
+			</thead>
+			<tbody>
+        ';
+        // Si hay registros y estamos en una pagina valida....
+        if ($total > 0 && $pagina <= $n_paginas) {
+            // Renderizamos cada uno de los registros
+            // Inciamos nuestro contador desde el registro que esté en la variable $inicio
+            $contador = $inicio + 1;
+            foreach ($datos as $key => $row) {
+                $tabla .= '
+                <tr class="text-center">
+                    <td>' . $contador . '</td>
+                    <td>' . $row["usuario_dni"] . '</td>
+                    <td>' . $row["usuario_nombre"] . " " . $row["usuario_apellido"] . '</td>
+                    <td>' . $row["usuario_telefono"] . '</td>
+                    <td>' . $row["usuario_usuario"] . '</td>
+                    <td>' . $row["usuario_email"] . '</td>
+                    <td>
+                        <a href="<?php echo SERVERURL ?>user-update/" class="btn btn-success">
+                            <i class="fas fa-sync-alt"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <form action="">
+                            <button type="button" class="btn btn-warning">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                ';
+                $contador++;
+            }
+        } else {
+            // Si hay registros pero está en una pagina que no existe
+            if ($total > 0) {
+                $tabla .= '
+                <tr class="text-center">
+                    <a href="' . $url . '" class="btn btn-raised btn-primary btn-sm">Haga click aqui para recargar el listado</a>
+                </tr>
+                ';
+            } else {
+                // Si no hay registros
+                $tabla .= '
+                <tr class="text-center">
+                    <td colspan=8>No hay registros en el sistema</td>
+                </tr>
+                ';
+            }
+        }
+
+        // Cerramos la tabla
+        $tabla .= '
+            </tbody>
+            </table>
+        </div>
+        ';
+
+        if ($total > 0 && $pagina <= $n_paginas) {
+            $tabla .= mainModel::paginacion($pagina, $n_paginas, $url, 7);
+        }
+        return $tabla;
     }
 }
