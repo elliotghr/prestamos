@@ -211,3 +211,14 @@ Vamos a generar el archivo js para detectar el click y cerrar la sesión
 Iniciamos el controlador para la paginación de usuarios, recibimos las variables necesarias para mostrar los botones y ciertos registros x pagina
 
 1. validamos que la pagina sea un número valido
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 32 Controlador paginador usuarios (parte2)
+
+En el método paginador_usuario_controlador de nuestro controlador de usuarios
+
+1.  Generamos la query para listar nuestros usuarios
+
+- Generamos una query si hay una busqueda
+- Generamos otra query si no hay una busqueda
+- La mandamos a la DB
+- Traemos los datos y el número total de resultados para generar mi n_paginas

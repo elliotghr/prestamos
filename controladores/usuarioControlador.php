@@ -289,5 +289,22 @@ class usuarioControlador extends usuarioModelo
         // Si estoy en la pagina 3...
         // Aplico la forumula -> ((3*10)-10) = 20
         // Entonces mi pagina 3 inicia mostrando desde el registro 20
+
+        // Si estamos haciendo una busqueda...
+        if (isset($busqueda) && $busqueda != "") {
+            $consulta = "SELECT * FROM usuario WHERE ((usuario_id != $id AND usuario_id != 1) AND (usuario_dni LIKE '%$busqueda%' OR usuario_usuario LIKE '%$busqueda%' OR usuario_apellido LIKE '%$busqueda%' OR usuario_telefono LIKE '%$busqueda%' OR usuario_direccion LIKE '%$busqueda%' OR usuario_email LIKE '%$busqueda%' OR usuario_usuario LIKE '%$busqueda%')) ORDER BY usuario_nombre ASC LIMIT $inicio, $registros";
+        } else {
+            // Si no hacemos una busqueda total
+            // omitimos el mismo usuario que hace la busqueda
+            // omitimos al usuario #1 (el administrador)
+            $consulta = "SELECT * FROM usuario WHERE usuario_id != $id AND usuario_id != 1 ORDER BY usuario_nombre ASC LIMIT $inicio, $registros";
+        }
+
+        $conexion = mainModel::conectar()->query($consulta);
+
+        $datos = $conexion->fetchAll(PDO::FETCH_ASSOC);
+        $total = (int) $conexion->fetchColumn();
+
+        $n_paginas = ceil($total / $registros);
     }
 }
