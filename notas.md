@@ -247,3 +247,8 @@ En el controlador completamos parte de la vista y redirecciones
 
 1. En los botones de actualizar y eliminar generamos la ruta a usuarioAjax con su respectivo id encriptado para evitar manipulación en la url por parte de los usuarios
 2. Se genera una variable cantidad_registros_inicio y también la variable cantidad_registros_final para armar un parrafo mostrando cuantos usuarios del total se están mostrando
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 35 Modelo eliminar usuario (CRUD)
+
+Corregimos un error en la validación al mostrar los registros totales cuando el usuario está en una pagina donde no hay registros
+Creamos el modelo para eliminar un usuario

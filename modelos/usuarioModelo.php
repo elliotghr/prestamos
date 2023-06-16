@@ -24,4 +24,14 @@ class usuarioModelo extends mainModel
 
         return $sql;
     }
+
+    //-------- Modelo eliminar usuario --------
+    public function eliminar_usuario_modelo($id)
+    {
+        $sql = mainModel::conectar()->prepare("DELETE FROM usuario WHERE usuario_id = :id");
+        $sql->bindParam(":id", $id);
+        $sql->execute();
+
+        return $sql;
+    }
 }

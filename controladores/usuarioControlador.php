@@ -387,7 +387,7 @@ class usuarioControlador extends usuarioModelo
         </div>
         ';
 
-        if ($total >= 1) {
+        if ($total > 0 && $pagina <= $n_paginas) {
             $tabla .= '
                 <p class="text-right">Mostrando usuario <b>' . $cantidad_registros_inicio . '</b> al <b>' . $cantidad_registros_final . '</b> de un total de <b>' . $total . '</b></p>
             ';
