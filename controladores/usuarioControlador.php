@@ -260,4 +260,34 @@ class usuarioControlador extends usuarioModelo
             echo json_encode($alerta);
         }
     }
+    //-------- Controlador para paginar los usuarios --------
+    // pagina es la pagina actual
+    // registros el # de registros que vamos a ver por pagina
+    // privilegio para ocuiltar ciertas columnas
+    // el id para no mostrar la cuenta propia
+    // url contendrá la url de la vista para crear los enlaces de los botones
+    // busqueda para identificar si es un listado total o hay una busqueda
+    public function paginador_usuario_controlador($pagina, $registros, $privilegio, $id, $url, $busqueda)
+    {
+        // Recibimos y limpiamos las variables que recibimos
+        $pagina = mainModel::limpiar_cadena($pagina);
+        $registros = mainModel::limpiar_cadena($registros);
+        $privilegio = mainModel::limpiar_cadena($privilegio);
+        $id = mainModel::limpiar_cadena($id);
+        $url = mainModel::limpiar_cadena($url);
+        $url = SERVERURL . $url . "/";
+        $busqueda = mainModel::limpiar_cadena($busqueda);
+
+        $tabla = "";
+        // Si la variable $pagina no viene definida o no es un número -> asignamos la primera pagina, en caso de que sí sea un número lo parseamos a int
+        $pagina = (isset($pagina) && $pagina > 0) ? (int) $pagina : 1;
+        // $inicio indica desde que registro vamos a inicar
+        $inicio = $pagina > 0 ? (($pagina * $registros) - $registros) : 0;
+        // Ej
+        // Yo tengo 50 usuarios totales
+        // Y muestro 10 usuarios x pagina
+        // Si estoy en la pagina 3...
+        // Aplico la forumula -> ((3*10)-10) = 20
+        // Entonces mi pagina 3 inicia mostrando desde el registro 20
+    }
 }

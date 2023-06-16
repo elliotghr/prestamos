@@ -205,3 +205,9 @@ Vamos a generar el archivo js para detectar el click y cerrar la sesión
    - encriptamos el token y el usuario
    - enviamos el código via fetch a nuestro archivo loginAjax
 4. En el loginAjax validamos que vengan las variables por post, en caso de que si vengan las dos variables entonces instanciamos al controlador y hacemos uso del método cerrar_session_controlador(), el cual comparará los tokens y los usuarios y cerrará o no la sesión
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 31 Controlador paginador usuarios (parte 1)
+
+Iniciamos el controlador para la paginación de usuarios, recibimos las variables necesarias para mostrar los botones y ciertos registros x pagina
+
+1. validamos que la pagina sea un número valido
