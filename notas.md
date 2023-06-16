@@ -252,3 +252,22 @@ En el controlador completamos parte de la vista y redirecciones
 
 Corregimos un error en la validación al mostrar los registros totales cuando el usuario está en una pagina donde no hay registros
 Creamos el modelo para eliminar un usuario
+
+## 💻 CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 36 Controlador eliminar usuario (CRUD)
+
+En el archivo usuarioAjax.php
+
+1. El el archivo usuarioAjax validamos que exista el paso de la variable usuario_id_del por POST
+2. En caso de que si exista, validamos de nuevo para enviar los datos al controlador
+
+En el usuarioControlador.php
+
+1. Creamos el método eliminar_usuario_controlador()
+   - Recibimos y desencriptamos la variable
+   - Validamos que no sea el usuario #1 (Administrador)
+   - Validamos que el usuario exista
+   - Comprobamos que el usuario no tenga prestamos
+     - Debido a las reglas de restricción no se podrá eliminar este usuario
+   - Si todo es correcto mandamos llamar al modelo, recibimos la respuesta y la enviamos con nuestro json al js
+     Correción de bugs
+1. Hacia falta una comilla doble en el action en el método paginador_usuario_controlador del controlador usuario al renderizar la tabla

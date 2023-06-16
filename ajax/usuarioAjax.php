@@ -6,7 +6,7 @@ require_once "../config/App.php";
 
 // Si enviamos los datos desde el formulario
 // Con una variable requerida validamos si se están enviando los datos correctamente al archivo
-if (isset($_POST['usuario_dni_reg'])) {
+if (isset($_POST['usuario_dni_reg']) || isset($_POST['usuario_id_del'])) {
 
     //-------- Instancia al controlador --------
     require_once "../controladores/usuarioControlador.php";
@@ -17,6 +17,13 @@ if (isset($_POST['usuario_dni_reg'])) {
     if (isset($_POST['usuario_dni_reg']) && isset($_POST['usuario_nombre_reg'])) {
         // llamamos al controlador
         echo $instancia_usuarios->agregar_usuario_controlador();
+    }
+
+
+    //-------- Eliminar un usuario --------
+    if (isset($_POST['usuario_id_del'])) {
+        // llamamos al controlador
+        echo $instancia_usuarios->eliminar_usuario_controlador();
     }
 } else {
     // Si alguien intenta acceder a este archivo...

@@ -350,7 +350,7 @@ class usuarioControlador extends usuarioModelo
                         </a>
                     </td>
                     <td>
-                        <form class="FormularioAjax" action=' . SERVERURL . 'ajax/usuarioAjax.php" method="POST" data-form="delete" autocomplete="off">
+                        <form class="FormularioAjax" action="' . SERVERURL . 'ajax/usuarioAjax.php" method="POST" data-form="delete" autocomplete="off">
                             <input type="hidden" name="usuario_id_del" value="' . mainModel::encryption($row['usuario_id']) . '">
                             <button type="submit" class="btn btn-warning">
                                 <i class="far fa-trash-alt"></i>
@@ -391,11 +391,94 @@ class usuarioControlador extends usuarioModelo
             $tabla .= '
                 <p class="text-right">Mostrando usuario <b>' . $cantidad_registros_inicio . '</b> al <b>' . $cantidad_registros_final . '</b> de un total de <b>' . $total . '</b></p>
             ';
-        }
-
-        if ($total > 0 && $pagina <= $n_paginas) {
             $tabla .= mainModel::paginacion($pagina, $n_paginas, $url, 7);
         }
         return $tabla;
+    }
+    //-------- Controlador para eliminar usuario --------
+    public function eliminar_usuario_controlador()
+    {
+        $usuario_id_del = mainModel::decryption($_POST['usuario_id_del']);
+
+        // Validamos que el usuario #1 no se pueda eliminar
+        if ($usuario_id_del == 1) {
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Ocurrió un error inesperado",
+                "Texto" => "No podemos eliminar al usuario principal del sistema",
+                "Tipo" => "error",
+            ];
+            // Convertimos a json
+            echo json_encode($alerta);
+            exit();
+        }
+
+        // Comprobamos la existencia del usuario en la db
+        $check_user = mainModel::ejecutar_consulta_simple("SELECT * FROM usuario WHERE usuario_id = $usuario_id_del");
+
+        if ($check_user->rowCount() < 1) {
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Ocurrió un error inesperado",
+                "Texto" => "El usuario no existe",
+                "Tipo" => "error",
+            ];
+            // Convertimos a json
+            echo json_encode($alerta);
+            exit();
+        }
+
+        // Comprobamos los prestamos x el usuario
+        $check_prestamo = mainModel::ejecutar_consulta_simple("SELECT * FROM prestamo WHERE usuario_id = $usuario_id_del LIMIT 1");
+
+        if ($check_prestamo->rowCount() >= 1) {
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Ocurrió un error inesperado",
+                "Texto" => "El usuario no se puede eliminar debido a que tiene prestamos registrados, recomendamos deshabilitar el usuario si ya no será utilizado",
+                "Tipo" => "error",
+            ];
+            // Convertimos a json
+            echo json_encode($alerta);
+            exit();
+        }
+
+        // Comprobamos los privilegios
+        session_start(["name" => "PRESTAMOS"]);
+        if ($_SESSION["id_spm"] != 1) {
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Ocurrió un error inesperado",
+                "Texto" => "No tienes los permisos necesarios para eliminar usuarios",
+                "Tipo" => "error",
+            ];
+            // Convertimos a json
+            echo json_encode($alerta);
+            exit();
+        }
+
+        $del_usuario = usuarioModelo::eliminar_usuario_modelo($usuario_id_del);
+
+        if ($del_usuario->rowCount() > 0) {
+            $alerta = [
+                "Alerta" => "recargar",
+                "Titulo" => "¡Éxito!",
+                "Texto" => "Usuario eliminado con éxito",
+                "Tipo" => "success",
+            ];
+            // Convertimos a json
+            echo json_encode($alerta);
+            exit();
+        } else {
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Ocurrió un error inesperado",
+                "Texto" => "No pudimos eliminar al usuario",
+                "Tipo" => "error",
+            ];
+            // Convertimos a json
+            echo json_encode($alerta);
+            exit();
+        }
     }
 }
