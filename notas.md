@@ -240,3 +240,10 @@ En la vista user-list
 En la plantilla.php
 
 1. Después de comprobar el inicio de sesión se crean las variables _$pagina_ y _$registros_ para que nuestra vista las puede utilizar en el método del controlador
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 34 Controlador paginador usuarios (parte 4)
+
+En el controlador completamos parte de la vista y redirecciones
+
+1. En los botones de actualizar y eliminar generamos la ruta a usuarioAjax con su respectivo id encriptado para evitar manipulación en la url por parte de los usuarios
+2. Se genera una variable cantidad_registros_inicio y también la variable cantidad_registros_final para armar un parrafo mostrando cuantos usuarios del total se están mostrando

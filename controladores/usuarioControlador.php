@@ -334,6 +334,7 @@ class usuarioControlador extends usuarioModelo
             // Renderizamos cada uno de los registros
             // Inciamos nuestro contador desde el registro que esté en la variable $inicio
             $contador = $inicio + 1;
+            $cantidad_registros_inicio = $inicio + 1;
             foreach ($datos as $key => $row) {
                 $tabla .= '
                 <tr class="text-center">
@@ -344,13 +345,14 @@ class usuarioControlador extends usuarioModelo
                     <td>' . $row["usuario_usuario"] . '</td>
                     <td>' . $row["usuario_email"] . '</td>
                     <td>
-                        <a href="<?php echo SERVERURL ?>user-update/" class="btn btn-success">
+                        <a href="' . SERVERURL . 'user-update/' . mainModel::encryption($row['usuario_id']) . '/" class="btn btn-success">
                             <i class="fas fa-sync-alt"></i>
                         </a>
                     </td>
                     <td>
-                        <form action="">
-                            <button type="button" class="btn btn-warning">
+                        <form class="FormularioAjax" action=' . SERVERURL . 'ajax/usuarioAjax.php" method="POST" data-form="delete" autocomplete="off">
+                            <input type="hidden" name="usuario_id_del" value="' . mainModel::encryption($row['usuario_id']) . '">
+                            <button type="submit" class="btn btn-warning">
                                 <i class="far fa-trash-alt"></i>
                             </button>
                         </form>
@@ -359,6 +361,7 @@ class usuarioControlador extends usuarioModelo
                 ';
                 $contador++;
             }
+            $cantidad_registros_final = $contador - 1;
         } else {
             // Si hay registros pero está en una pagina que no existe
             if ($total > 0) {
@@ -383,6 +386,12 @@ class usuarioControlador extends usuarioModelo
             </table>
         </div>
         ';
+
+        if ($total >= 1) {
+            $tabla .= '
+                <p class="text-right">Mostrando usuario <b>' . $cantidad_registros_inicio . '</b> al <b>' . $cantidad_registros_final . '</b> de un total de <b>' . $total . '</b></p>
+            ';
+        }
 
         if ($total > 0 && $pagina <= $n_paginas) {
             $tabla .= mainModel::paginacion($pagina, $n_paginas, $url, 7);
