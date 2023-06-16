@@ -34,4 +34,24 @@ class usuarioModelo extends mainModel
 
         return $sql;
     }
+    //-------- Modelo obtener datos del usuario --------
+    // Este método realizará dos tipos de acciones
+    // Traer todos los datos de un usuario para su actualización en la vista user.update
+    // Traer la cantidad de usuarios para mostrarlo en el dashboard
+    protected static function obtener_datos_usuario_modelo($tipo, $id)
+    {
+        // Si necesitamos los datos para actualizar un usuario
+        if ($tipo == "Unico") {
+            $sql = mainModel::conectar()->prepare("SELECT * FROM usuario WHERE usuario_id = :id");
+            $sql->bindParam(":id", $id);
+            $sql->execute();
+            return $sql;
+            
+        } else if ($tipo == "Conteo") {
+            // Si necesitamos los datos para el dashboard
+            $sql = mainModel::ejecutar_consulta_simple("SELECT COUNT(*) FROM usuario WHERE usuario_id != 1");
+            // Retornamos el valor
+            return $sql;
+        }
+    }
 }

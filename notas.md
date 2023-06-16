@@ -271,3 +271,11 @@ En el usuarioControlador.php
    - Si todo es correcto mandamos llamar al modelo, recibimos la respuesta y la enviamos con nuestro json al js
      Correción de bugs
 1. Hacia falta una comilla doble en el action en el método paginador_usuario_controlador del controlador usuario al renderizar la tabla
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 37 Modelo y controlador datos usuario (CRUD)
+
+1. Creamos el método obtener_datos_usuario_modelo en el modelo usuarioModelo para enviar los datos
+   - Este método enviará los datos para actualizar un usuario o el conteo de todos nuestros usuarios registrados en la db (ignorando al usuario admin)
+   - Dependiendo del tipo de operación devolveremos ciertos datos
+2. Creamos el controlador que recibirá y enviará los datos al modelo
+3. En la NavBar corregimos la URL para que el usuario logueado pueda acceder a los datos de su cuenta para actualizarlos
