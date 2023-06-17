@@ -294,3 +294,13 @@ Modificamos nuestra home view (Dashboard)
    - El bloque para ir a CREAR NUEVO USUARIO, LISTA DE USUARIOS, BUSCAR USUARIO se valida únicamente para usuarios con privilegio 1
    - Al inicio de la vista verificamos a alguien que quiera modificar otro usuario, si tiene privilegios de admin podrá acceder, si no, se le cerrará la sesión
    - Creamos una validación para mostrar el formulario, si el id encriptado del usuario exite en la DB mostrará el formulario, si no, mostrará un error
+
+## 💻 CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 39 Vista user-update (parte 2) [CRUD]
+
+Renderizamos datos y checamos privilegios en la vista update-user
+
+1. Renderizamos todos los datos en los inputs necesarios
+2. Validamos privilegios
+   - en el estado de cuenta
+   - en el nivel de privilegio
+3. Creamos un input invisible antes de terminar el formulario para detectar si la actualización es una cuenta propia o impropia
