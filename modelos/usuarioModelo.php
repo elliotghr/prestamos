@@ -46,12 +46,42 @@ class usuarioModelo extends mainModel
             $sql->bindParam(":id", $id);
             $sql->execute();
             return $sql;
-            
         } else if ($tipo == "Conteo") {
             // Si necesitamos los datos para el dashboard
             $sql = mainModel::ejecutar_consulta_simple("SELECT COUNT(*) FROM usuario WHERE usuario_id != 1");
             // Retornamos el valor
             return $sql;
         }
+    }
+    //-------- Modelo actualizar datos del usuario --------
+    protected static function actualizar_usuario_modelo($datos)
+    {
+        $sql = mainModel::conectar()->prepare("UPDATE usuario SET 
+                usuario_dni =:usuario_dni,
+                usuario_nombre =:usuario_nombre,
+                usuario_apellido =:usuario_apellido,
+                usuario_telefono =:usuario_telefono,
+                usuario_direccion =:usuario_direccion,
+                usuario_email =:usuario_email,
+                usuario_usuario =:usuario_usuario,
+                usuario_clave =:usuario_clave,
+                usuario_estado =:usuario_estado,
+                usuario_privilegio =:usuario_privilegio WHERE usuario_id = :usuario_id");
+
+        $sql->bindParam(":usuario_id", $datos["usuario_id"]);
+        $sql->bindParam(":usuario_dni", $datos["usuario_dni"]);
+        $sql->bindParam(":usuario_nombre", $datos["usuario_nombre"]);
+        $sql->bindParam(":usuario_apellido", $datos["usuario_apellido"]);
+        $sql->bindParam(":usuario_telefono", $datos["usuario_telefono"]);
+        $sql->bindParam(":usuario_direccion", $datos["usuario_direccion"]);
+        $sql->bindParam(":usuario_email", $datos["usuario_email"]);
+        $sql->bindParam(":usuario_usuario", $datos["usuario_usuario"]);
+        $sql->bindParam(":usuario_clave", $datos["usuario_clave"]);
+        $sql->bindParam(":usuario_estado", $datos["usuario_estado"]);
+        $sql->bindParam(":usuario_privilegio", $datos["usuario_privilegio"]);
+
+        $sql->execute();
+
+        return $sql;
     }
 }

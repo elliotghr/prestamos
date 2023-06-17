@@ -304,3 +304,8 @@ Renderizamos datos y checamos privilegios en la vista update-user
    - en el estado de cuenta
    - en el nivel de privilegio
 3. Creamos un input invisible antes de terminar el formulario para detectar si la actualización es una cuenta propia o impropia
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 40 Modelo actualizar usuario (CRUD)
+
+Se reciben los datos para preparar la consulta, ejecutarla y retornar el valor del update
+Controlador creado
