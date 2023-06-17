@@ -279,3 +279,18 @@ En el usuarioControlador.php
    - Dependiendo del tipo de operación devolveremos ciertos datos
 2. Creamos el controlador que recibirá y enviará los datos al modelo
 3. En la NavBar corregimos la URL para que el usuario logueado pueda acceder a los datos de su cuenta para actualizarlos
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 38 Vista user-update (parte 1) [CRUD]
+
+Modificamos nuestra home view (Dashboard)
+
+1. Actualizaremos el número de registros en el recuadro de Usuarios
+
+   - Importamos el controlador
+   - Instanciamos y usamos el método obtener_datos_usuario_controlador para trar el total de registros
+   - Imprimimos ese dato que tiene la DB
+
+2. Modificaciones en user-update
+   - El bloque para ir a CREAR NUEVO USUARIO, LISTA DE USUARIOS, BUSCAR USUARIO se valida únicamente para usuarios con privilegio 1
+   - Al inicio de la vista verificamos a alguien que quiera modificar otro usuario, si tiene privilegios de admin podrá acceder, si no, se le cerrará la sesión
+   - Creamos una validación para mostrar el formulario, si el id encriptado del usuario exite en la DB mostrará el formulario, si no, mostrará un error

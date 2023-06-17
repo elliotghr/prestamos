@@ -53,12 +53,19 @@
 	// Solo el privilegio 1 puede acceder a esta parte del sistema -->
 	<?php
 	if ($_SESSION["privilegio_spm"] == 1) {
+
+		require_once "./controladores/usuarioControlador.php";
+
+		$instancia_usuario = new usuarioControlador();
+
+		$total = $instancia_usuario->obtener_datos_usuario_controlador("Conteo");
+		$rowCount = $total->fetch()[0];
 	?>
 		<a href="<?php echo SERVERURL ?>user-list/" class="tile">
 			<div class="tile-tittle">Usuarios</div>
 			<div class="tile-icon">
 				<i class="fas fa-user-secret fa-fw"></i>
-				<p>50 Registrados</p>
+				<p><?php echo $rowCount ?> Registrados</p>
 			</div>
 		</a>
 	<?php

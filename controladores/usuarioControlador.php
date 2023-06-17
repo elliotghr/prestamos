@@ -483,7 +483,7 @@ class usuarioControlador extends usuarioModelo
     }
 
     //-------- Modelo obtener datos del usuario --------
-    public function obtener_datos_usuario_controlador($tipo, $id)
+    public function obtener_datos_usuario_controlador($tipo, $id = null)
     {
         // Recibimos los datos, limpiamos y desencriptamos
         $tipo = mainModel::limpiar_cadena($tipo);
