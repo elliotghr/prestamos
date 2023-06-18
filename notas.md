@@ -309,3 +309,8 @@ Renderizamos datos y checamos privilegios en la vista update-user
 
 Se reciben los datos para preparar la consulta, ejecutarla y retornar el valor del update
 Controlador creado
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 41 Controlador actualizar usuario (parte 1)
+
+1. Preparamos el archivo usuarioAjax para recibir los datos y enviarlos al controlador
+2. En el controlador empezamos a recibir los datos, posteriormente validaremos la integridad de los mismos

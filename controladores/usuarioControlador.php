@@ -495,5 +495,82 @@ class usuarioControlador extends usuarioModelo
     //-------- Controlador actualizar datos del usuario --------
     public function actualizar_usuario_controlador()
     {
+        // Recibimos los datos
+        // Primero desencriptamos y limpiamos el id
+        $usuario_id_up = mainModel::decryption($_POST["usuario_id_up"]);
+        $usuario_id_up = mainModel::limpiar_cadena($usuario_id_up);
+
+        // Verificamos la existencia del id
+        $check_user = mainModel::ejecutar_consulta_simple("SELECT * FROM usuario WHERE usuario_id = $usuario_id_up");
+
+        // Si no vienen datos enviamos el mensaje de error
+        if ($check_user->rowCount() <= 0) {
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Ocurrió un error inesperado",
+                "Texto" => "El usuario no existe",
+                "Tipo" => "error",
+            ];
+            // Convertimos a json
+            echo json_encode($alerta);
+            exit();
+        } else {
+            // Si vienen datos/existe el usuario, entonces obtenemos los datos para validaciones
+            $datos = $check_user->fetch();
+        }
+
+        // Limpiamos los datos
+        $usuario_dni_up = mainModel::limpiar_cadena($_POST["usuario_dni_up"]);
+        $usuario_nombre_up = mainModel::limpiar_cadena($_POST["usuario_nombre_up"]);
+        $usuario_apellido_up = mainModel::limpiar_cadena($_POST["usuario_apellido_up"]);
+        $usuario_telefono_up = mainModel::limpiar_cadena($_POST["usuario_telefono_up"]);
+        $usuario_direccion_up = mainModel::limpiar_cadena($_POST["usuario_direccion_up"]);
+
+        $usuario_usuario_up = mainModel::limpiar_cadena($_POST["usuario_usuario_up"]);
+        $usuario_email_up = mainModel::limpiar_cadena($_POST["usuario_email_up"]);
+
+        $usuario_clave_nueva_1 = mainModel::limpiar_cadena($_POST["usuario_clave_nueva_1"]);
+        $usuario_clave_nueva_2 = mainModel::limpiar_cadena($_POST["usuario_clave_nueva_2"]);
+
+        // Verificamos el estado ya que no son obligatorios
+        if (isset($_POST["usuario_estado_up"])) {
+            $estado = mainModel::limpiar_cadena($_POST["usuario_estado_up"]);
+        } else {
+            // Conservamos los datos anteriores en caso de no venir definidos
+            $estado = $datos["usuario_estado"];
+        }
+        // Verificamos los privilegios ya que no son obligatorios
+        if (isset($_POST["usuario_privilegio"])) {
+            $privilegio = mainModel::limpiar_cadena($_POST["usuario_privilegio"]);
+        } else {
+            // Conservamos los datos anteriores en caso de no venir definidos
+            $privilegio = $datos["usuario_privilegio"];
+        }
+
+        // Recibimos los datos restantes
+        $usuario_admin = mainModel::limpiar_cadena($_POST["usuario_admin"]);
+        $clave_admin = mainModel::limpiar_cadena($_POST["clave_admin"]);
+        $clave_admin = mainModel::encryption($clave_admin);
+
+        $tipo_cuenta = mainModel::limpiar_cadena($_POST["tipo_cuenta"]);
+
+        // Empezamos con la validación de datos
+        //-------- Comprobamos los campos vacios que son requeridos--------
+        if ($usuario_dni_up == "" || $usuario_nombre_up == "" || $usuario_apellido_up == "" || $usuario_usuario_up == "" || $usuario_admin == "") {
+            // Generamos una array asociativo con los datos necesarios para nuestro fetch js
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Ocurrió un error inesperado",
+                "Texto" => "No has llenado todos los campos obligatorios",
+                "Tipo" => "error",
+            ];
+            // Convertimos a json
+            echo json_encode($alerta);
+            exit();
+        }
+
+
+        // $usuario_clave_nueva_1 = mainModel::limpiar_cadena($_POST["usuario_clave_nueva_1"]);
+        // $usuario_clave_nueva_2 = mainModel::limpiar_cadena($_POST["usuario_clave_nueva_2"]);
     }
 }
