@@ -72,7 +72,7 @@ if (isset($_POST["busqueda-inicial"]) || isset($_POST["eliminar-busqueda"]) || i
                     exit();
                 }
                 // Creamos la variable de sesión
-                $_SESSION[$name_var] = $name_var;
+                $_SESSION[$name_var] = $_POST["busqueda-inicial"];
             }
 
             //Para eliminar la busqueda
@@ -95,7 +95,7 @@ if (isset($_POST["busqueda-inicial"]) || isset($_POST["eliminar-busqueda"]) || i
     $url = SERVERURL . $data_url[$modulo] . "/";
     // Redireccionar
     $alerta = [
-        "Alerta" => "redireccion",
+        "Alerta" => "redireccionar",
         "URL" => $url
     ];
     echo json_encode($alerta);

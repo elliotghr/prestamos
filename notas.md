@@ -345,3 +345,8 @@ A nuestras vistas se le agregan los names y values en los inputs para detectar d
 4. Por ultimo mandamos una redirección a la misma vista para que cargue nuestra busqueda
 
 ## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 47 Buscador usuario (parte 3)
+
+1. Se renderiza una u otra parte de nuestro HTML dependiendo si existe o no la variable de sesión de la busqueda
+2. En caso de que no exista se define la clase para el envio por JS y el action
+3. En caso de que ya exista se define el siguiente formulario con la misma clase y action, el input oculot del moduloy se imprime el valor de la busqueda
+4. Por ultimo llamamos al controlador que traerá los resultados de nuestra busqueda, solo le pasamos el parametro de busqueda y hemos terminado
