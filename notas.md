@@ -314,3 +314,8 @@ Controlador creado
 
 1. Preparamos el archivo usuarioAjax para recibir los datos y enviarlos al controlador
 2. En el controlador empezamos a recibir los datos, posteriormente validaremos la integridad de los mismos
+
+## 💻 CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 42, 43 y 44 Controlador actualizar usuario (parte 2, 3 y 4)
+
+En el controlador terminamos de validar los patterns, los campos unicos, privilegios y estados de cuenta, claves, verificamos si la cuenta es propia o inpropia para actualizar las variables de sesión y que se reflejen después de la recarga.
+Por último, mandamos los datos al modelo y enviamos la respuesta via json
