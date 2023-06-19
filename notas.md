@@ -331,3 +331,17 @@ Comenzamos con el módulo para la busqueda en el listado
 5. Obtenemos la variable "modulo" del formulario para poder asignar posteriormente un valor
 
 A nuestras vistas se le agregan los names y values en los inputs para detectar de donde viene la solicitud
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 46 Buscador usuario (parte 2)
+
+1. Definimos los valores restantes en nuestro array de vistas validas
+2. Todos los modulos comparten solo un termino de busqueda, excepto el módulo de prestamos, ese lleva una logica diferente
+   - El modulo de prestamo define 2 variables de busqueda, fecha inicio y fecha final, creamos dos variables de estas para poder asignarlas a variables de sesión
+   - validamos que vengan las fechas de manera correcta
+   - Si todo está bien creamos esas variables de sesión
+   - Si solo viene la variable "eliminar-busqueda" significa que vamos a eliminarlas, entonces usamos el método unset para esto
+3. Para los demás modulos generamos algo similar, ya que creqaremos una variable dinamica para nuestros modulos restantes
+   - Si viene la variable "eliminar-busqueda" realizaremos un unset de la misma manera que en prestamos
+4. Por ultimo mandamos una redirección a la misma vista para que cargue nuestra busqueda
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 47 Buscador usuario (parte 3)
