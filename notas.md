@@ -319,3 +319,15 @@ Controlador creado
 
 En el controlador terminamos de validar los patterns, los campos unicos, privilegios y estados de cuenta, claves, verificamos si la cuenta es propia o inpropia para actualizar las variables de sesión y que se reflejen después de la recarga.
 Por último, mandamos los datos al modelo y enviamos la respuesta via json
+
+## CURSO mi primer SISTEMA [PHP, MVC, MYSQL & POO] - 45 Buscador usuario (parte 1)
+
+Comenzamos con el módulo para la busqueda en el listado
+
+1. Creamos un archivo buscadorAjax que será un archivo común para las busquedas de nuestros diferentes modulos (como usuarios, registros, prestamos, etc)
+2. Inicializamos el uso de la varible de sesión PRESTAMOS, ya que posteriormente ocuparemos sus variables
+3. Validamos que vengan las variables por POST como: busqueda-inicial, eliminar-busqueda, fecha-inicio y fecha-final para asegurarnos de que vienen de alguno de nuestros forumularios, en caso contrario destruimos la sesión de la persona que intenta acceder al archivo
+4. Definimos un array asosiativo con variables que vienen en los formularios, como validación de seguridad y obteniendo la vista de donde viene
+5. Obtenemos la variable "modulo" del formulario para poder asignar posteriormente un valor
+
+A nuestras vistas se le agregan los names y values en los inputs para detectar de donde viene la solicitud

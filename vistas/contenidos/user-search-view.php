@@ -29,12 +29,13 @@ if ($_SESSION["privilegio_spm"] != 1) {
 
 <div class="container-fluid">
 	<form class="form-neon" action="">
+		<input type="hidden" name="modulo" value="usuario">
 		<div class="container-fluid">
 			<div class="row justify-content-md-center">
 				<div class="col-12 col-md-6">
 					<div class="form-group">
 						<label for="inputSearch" class="bmd-label-floating">¿Qué usuario estas buscando?</label>
-						<input type="text" class="form-control" name="busqueda-" id="inputSearch" maxlength="30">
+						<input type="text" class="form-control" name="busqueda-inicial" id="inputSearch" maxlength="30">
 					</div>
 				</div>
 				<div class="col-12">
